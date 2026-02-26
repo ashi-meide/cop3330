@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-# NO-OP
+rm -f driver

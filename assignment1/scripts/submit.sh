@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-echo 'Submit assignment1/submission/driver.cpp for assignment.'
+printf '\357\200\214 Submit assignment1/submission/driver.cpp for assignment.\n'
