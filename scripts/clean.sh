@@ -2,4 +2,4 @@
 
 rm -f *.pch
 rm -f *.o
-rm -f *.tar{,.gz}
+rm -f ../*.tar{,.gz}
