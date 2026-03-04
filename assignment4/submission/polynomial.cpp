@@ -142,13 +142,29 @@ ostream &operator<<(ostream &out, const Polynomial &self) {
 }
 
 // Comparison Operators
-bool operator==(const Polynomial &a, const Polynomial &b) {}
+bool operator==(const Polynomial &a, const Polynomial &b) {
+	// Letters don't match
+	if (a.letter != b.letter)
+		return false;
+
+	// Coefficients don't match
+	for (int k = 0; k <= MAX_DEGREE; k++)
+		if (a.coefficients[k] != b.coefficients[k])
+			return false;
+
+	return true;
+}
 
 bool operator!=(const Polynomial &a, const Polynomial &b) {
 	return !(a == b); // Defined in terms of == operator
 }
 
-bool operator<(const Polynomial &a, const Polynomial &b) {}
+bool operator<(const Polynomial &a, const Polynomial &b) {
+	for (int k = MAX_DEGREE; k >= 0; k--)
+		if (a.coefficients[k] != b.coefficients[k])
+			return a.coefficients[k] < b.coefficients[k];
+	return a.letter < b.letter;
+}
 
 bool operator<=(const Polynomial &a, const Polynomial &b) {
 	return (a < b) || (a == b); // Defined in terms of < and == operators
