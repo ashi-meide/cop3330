@@ -1,0 +1,8 @@
+Default polynomial: Polynomial of degree -1
+Parameterized polynomial (constructed with 5): -5x^10 - 4x^9 - 3x^8 - 2x^7 - x^6 + x^4 + 2x^3 + 3x^2 + 4x + 5
+After setCoefficient(2, 10) and setLetter('m'): -5m^10 - 4m^9 - 3m^8 - 2m^7 - m^6 + m^4 + 2m^3 + 10m^2 + 4m + 5
+
+Arithmetic Test (Addition):
+pA: -7x^10 - 6x^9 - 5x^8 - 4x^7 - 3x^6 - 2x^5 - x^4 + x^2 + 2x + 3
+pB: -8x^10 - 7x^9 - 6x^8 - 5x^7 - 4x^6 - 3x^5 - 2x^4 - x^3 + x + 2
+pA + pB: -15x^10 - 13x^9 - 11x^8 - 9x^7 - 7x^6 - 5x^5 - 3x^4 - x^3 + x^2 + 3x + 5
