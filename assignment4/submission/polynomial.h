@@ -16,13 +16,24 @@ class Polynomial {
   private:
 	// Fields
 	int coefficients[MAX_DEGREE + 1];
-	int degree;
+	int degree; // In an ideal world this would be a getter
+				// but you have forced my hand.
 	char letter;
+
+	// Private Constructors
+
+	/*
+	 * Constructs an all-zero polynomial with the provided univariate letter.
+	 * If the provided letter is invalid, it will default to 'x'.
+	 */
+	Polynomial(char univariate);
 
 	// Private Methods
 
 	/*
 	 * Recalculates the polynomial's degree from the coefficients.
+	 * Because the stupid degree field that we are forced to have can become
+	 * desynced from its actual value if not recalculated.
 	 */
 	void updateDegree();
 
@@ -78,4 +89,9 @@ class Polynomial {
 	friend bool operator<=(const Polynomial &a, const Polynomial &b);
 	friend bool operator>(const Polynomial &a, const Polynomial &b);
 	friend bool operator>=(const Polynomial &a, const Polynomial &b);
+
+	// Arithmetic Operators
+	friend Polynomial operator+(const Polynomial &a, const Polynomial &b);
+	friend Polynomial operator-(const Polynomial &a, const Polynomial &b);
+	friend Polynomial operator*(const Polynomial &a, const Polynomial &b);
 };

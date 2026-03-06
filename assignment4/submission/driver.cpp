@@ -28,5 +28,20 @@ int main() {
 	cout << "pB: " << pB << endl;
 	cout << "pA + pB: " << pSum << endl;
 
+	Polynomial pC;
+	pC.setCoefficient(1, 5);
+	pC.setCoefficient(2, 3);
+	pC.setCoefficient(3, -2);
+	pC.setLetter('y');
+
+	Polynomial pD;
+	pD.setCoefficient(1, 1);
+	pD.setLetter('y');
+
+	cout << "\nArithmetic Test (Multiplication):" << endl;
+	cout << "pC: " << pC << endl;
+	cout << "pD: " << pD << endl;
+	cout << "pC * pD: " << pC * pD << endl;
+
 	return 0;
 }

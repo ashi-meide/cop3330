@@ -10,8 +10,14 @@
 #include <iostream>
 using namespace std;
 
-// Implementation detail that doesn't belong in header
 const char DEFAULT_LETTER = 'x';
+
+// Private Constructors
+
+Polynomial::Polynomial(char univariate)
+	: coefficients{}, letter(DEFAULT_LETTER) {
+	setLetter(univariate);
+}
 
 // Private Methods
 
@@ -24,11 +30,9 @@ void Polynomial::updateDegree() {
 
 // Constructors
 
-Polynomial::Polynomial() : coefficients{}, letter(DEFAULT_LETTER) {
-	updateDegree();
-}
+Polynomial::Polynomial() : Polynomial(DEFAULT_LETTER) { updateDegree(); }
 
-Polynomial::Polynomial(int a0) : coefficients{}, letter(DEFAULT_LETTER) {
+Polynomial::Polynomial(int a0) : Polynomial(DEFAULT_LETTER) {
 	for (int k = 0; k <= MAX_DEGREE; k++)
 		coefficients[k] = a0 - k;
 	updateDegree();
@@ -176,4 +180,43 @@ bool operator>(const Polynomial &a, const Polynomial &b) {
 
 bool operator>=(const Polynomial &a, const Polynomial &b) {
 	return (a > b) || (a == b); // Defined in terms of > and == operators
+}
+
+// Arithmetic Operators
+Polynomial operator+(const Polynomial &a, const Polynomial &b) {
+	Polynomial sum(a.letter);
+
+	// Add coefficients
+	for (int k = 0; k <= MAX_DEGREE; k++)
+		sum.coefficients[k] = a.coefficients[k] + b.coefficients[k];
+	sum.updateDegree();
+
+	return sum;
+}
+
+Polynomial operator-(const Polynomial &a, const Polynomial &b) {
+	Polynomial difference(a.letter);
+
+	// Subtract coefficients
+	for (int k = 0; k <= MAX_DEGREE; k++)
+		difference.coefficients[k] = a.coefficients[k] - b.coefficients[k];
+	difference.updateDegree();
+
+	return difference;
+}
+
+Polynomial operator*(const Polynomial &a, const Polynomial &b) {
+	Polynomial product(a.letter);
+
+	// Multiply coefficients
+	for (int ka = 0; ka <= MAX_DEGREE; ka++)
+		if (a.coefficients[ka] != 0) // Skip zeroes in A
+			for (int kb = 0; kb <= MAX_DEGREE; kb++)
+				if (b.coefficients[kb] != 0)   // Skip zeroes in B
+					if (ka + kb <= MAX_DEGREE) // Truncate high degrees
+						product.coefficients[ka + kb] += // Combine exponents
+							a.coefficients[ka] * b.coefficients[kb];
+	product.updateDegree();
+
+	return product;
 }
