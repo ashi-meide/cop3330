@@ -1,8 +1,8 @@
 # This entire makefile is just a build orchestrator
-.PHONY: _validate _usage build test submit clean
+.PHONY: _validate usage build test submit clean
 
 # Notify user to specify what assignment to build
-_usage:
+usage:
 	@printf 'Usage:\n'
 	@printf '  make [build|test|submit|clean] ASSIGNMENT=[1|2|3|4]\n'
 
