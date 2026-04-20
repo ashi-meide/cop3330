@@ -4,7 +4,7 @@
 # Notify user to specify what assignment to build
 usage:
 	@printf 'Usage:\n'
-	@printf '  make [build|test|submit|clean] ASSIGNMENT=[1..5]\n'
+	@printf '  make [build|test|submit|clean] ASSIGNMENT=[1..6]\n'
 
 # Validate assignment selection
 _validate:
@@ -17,13 +17,13 @@ _validate:
 
     # Validate that ASSIGNMENT is an integer within range
 	@case "$(ASSIGNMENT)" in                                                   \
-        1|2|3|4|5 ) ;;                                                           \
+        1|2|3|4|5|6 ) ;;                                                           \
         ''|*[!0-9]* )                                                          \
             printf '\357\200\215 ASSIGNMENT is not a valid integer.\n';        \
             $(MAKE) usage;                                                     \
             exit 1 ;;                                                          \
         * )                                                                    \
-            printf '\357\200\215 ASSIGNMENT is outside valid range [1, 5].\n'; \
+            printf '\357\200\215 ASSIGNMENT is outside valid range [1..6].\n'; \
             $(MAKE) usage;                                                     \
             exit 1 ;;                                                          \
     esac

@@ -1,0 +1,6 @@
+Testing Stack:
+Pushing elements: 10, 20, 30
+Current top: 30
+Popped elements: 30 20 10 
+Testing evaluateRPN:
+RPN Expression: "3 4 + 2 * 1 +" evaluates to 15
